@@ -1,0 +1,7 @@
+.pop-up-container {
+  position: absolute;
+  height: 250px;
+  width: 250px;
+  background-color: blue;
+  z-index: 1000;
+}

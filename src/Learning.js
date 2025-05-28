@@ -32,7 +32,7 @@ const Learning = () => {
     if (state === 19) {
       setStyle({ ...style, backgroundColor: "green", borderRadius: "14px" });
     }
-    console.log("compomnent rendered");
+    console.log("component rendered");
   }, [state]);
 
   return (

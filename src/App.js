@@ -2,6 +2,9 @@
 import "./App.css";
 import Learning from "./Learning";
 import StudentsData from "./StudentsData";
+import Practice from "./Practice";
+//import Buttons from "./Buttons";
+import SimplePaper from "./SimplePaper";
 
 function App() {
   //what is component?
@@ -120,13 +123,16 @@ function App() {
             Call functions{" "}
           </button>
           {/* <Learning /> */}
-          <StudentsData data={studentsData} />
+          {/*<StudentsData data={studentsData} />*/}
+          {/*<Practice />*/}
         </div>
         <div>
           {/* <Greetings /> */}
           {/* <Lesson status="Done" /> */}
         </div>
       </header>
+      <SimplePaper />
+      {/*<Buttons />*/}
     </div>
   );
   function Greetings() {
