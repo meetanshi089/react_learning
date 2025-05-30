@@ -30,7 +30,7 @@ function SimplePaper() {
       <button onClick={() => onClick("right")}>right</button>
       <button onClick={() => onClick("bottom")}>bottom</button>
       <button onClick={() => onClick("left")}>left</button>
-      <button onClick={() => setShow((prev) => !prev)}>left</button>
+      <button onClick={() => setShow((prev) => !prev)}>toggle state</button>
     </>
   );
 }

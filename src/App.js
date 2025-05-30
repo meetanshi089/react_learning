@@ -5,13 +5,14 @@ import StudentsData from "./StudentsData";
 import Practice from "./Practice";
 //import Buttons from "./Buttons";
 import SimplePaper from "./SimplePaper";
-
+import FunTableForm from "./FunTableForm";
+import CounterApp from "./CounterApp";
 function App() {
   //what is component?
   //What are hooks?
   //Array methods is js
   //.map, .filter, .reduce
-  const studentsData = [
+  /*const studentsData = [
     {
       name: "Student1",
       physics: 25,
@@ -106,13 +107,13 @@ function App() {
     arrayExample();
     mapExample();
     filterExample();
-  };
+  };*/
 
   return (
     <div className="App">
       <header className="App-header">
         <div>
-          <button
+          {/*<button
             style={{
               width: "200px",
               height: "200px",
@@ -121,17 +122,21 @@ function App() {
             onClick={onClick}
           >
             Call functions{" "}
-          </button>
+          </button>*/}
           {/* <Learning /> */}
           {/*<StudentsData data={studentsData} />*/}
           {/*<Practice />*/}
         </div>
         <div>
+          <p>Fun Table Form!</p>
           {/* <Greetings /> */}
           {/* <Lesson status="Done" /> */}
         </div>
       </header>
-      <SimplePaper />
+      <FunTableForm />
+      <CounterApp />
+      {/*<SimplePaper />*/}
+      {/*<FunctionTable />*/}
       {/*<Buttons />*/}
     </div>
   );

@@ -1,0 +1,10 @@
+table,
+td,
+tr,
+th,
+tbody {
+  border: 4px solid;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
