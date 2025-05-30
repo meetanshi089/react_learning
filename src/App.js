@@ -133,7 +133,10 @@ function App() {
           {/* <Lesson status="Done" /> */}
         </div>
       </header>
-      <FunTableForm />
+      <div className="form">
+        <FunTableForm />
+      </div>
+
       <CounterApp />
       {/*<SimplePaper />*/}
       {/*<FunctionTable />*/}
