@@ -29,9 +29,13 @@
 }
 form {
   padding: 2%;
+  background-color: rgb(54, 81, 107);
+  color: antiquewhite;
 }
 .count_1 {
   padding: 2%;
+  background-color: #669ab9;
+  color: antiquewhite;
 }
 @keyframes App-logo-spin {
   from {

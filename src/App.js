@@ -139,9 +139,9 @@ function App() {
       </div>
       <div className="count_1">
         <PracticeQues />
+        <CounterApp />
       </div>
 
-      <CounterApp />
       {/*<SimplePaper />*/}
       {/*<FunctionTable />*/}
       {/*<Buttons />*/}
