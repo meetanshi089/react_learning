@@ -1,0 +1,274 @@
+import React, { useState, useEffect } from "react";
+import "./FunTableform.css";
+
+const FunTableForm = () => {
+  const [num1, setNum1] = useState("");
+  const [num2, setNum2] = useState("");
+  const [operator, setOperator] = useState("");
+  const [result, setResult] = useState("");
+  const [weather, setWeather] = useState(null);
+  const [selectedState, setSelectedState] = useState("");
+
+  const API_KEY = "98c58b33527d3b8c6006337a52a48f";
+
+  const states = [
+    {
+      state: "Andhra Pradesh",
+      city: "Vijayawada",
+      stateCode: "AP",
+      countryCode: "IN",
+    },
+    {
+      state: "Arunachal Pradesh",
+      city: "Itanagar",
+      stateCode: "AR",
+      countryCode: "IN",
+    },
+    { state: "Assam", city: "Guwahati", stateCode: "AS", countryCode: "IN" },
+    { state: "Bihar", city: "Patna", stateCode: "BR", countryCode: "IN" },
+    {
+      state: "Chhattisgarh",
+      city: "Raipur",
+      stateCode: "CT",
+      countryCode: "IN",
+    },
+    { state: "Goa", city: "Panaji", stateCode: "GA", countryCode: "IN" },
+    { state: "Gujarat", city: "Ahmedabad", stateCode: "GJ", countryCode: "IN" },
+    {
+      state: "Haryana",
+      city: "Chandigarh",
+      stateCode: "HR",
+      countryCode: "IN",
+    },
+    {
+      state: "Himachal Pradesh",
+      city: "Shimla",
+      stateCode: "HP",
+      countryCode: "IN",
+    },
+    { state: "Jharkhand", city: "Ranchi", stateCode: "JH", countryCode: "IN" },
+    {
+      state: "Karnataka",
+      city: "Bengaluru",
+      stateCode: "KA",
+      countryCode: "IN",
+    },
+    {
+      state: "Kerala",
+      city: "Thiruvananthapuram",
+      stateCode: "KL",
+      countryCode: "IN",
+    },
+    {
+      state: "Madhya Pradesh",
+      city: "Bhopal",
+      stateCode: "MP",
+      countryCode: "IN",
+    },
+    {
+      state: "Maharashtra",
+      city: "Mumbai",
+      stateCode: "MH",
+      countryCode: "IN",
+    },
+    { state: "Manipur", city: "Imphal", stateCode: "MN", countryCode: "IN" },
+    {
+      state: "Meghalaya",
+      city: "Shillong",
+      stateCode: "ML",
+      countryCode: "IN",
+    },
+    { state: "Mizoram", city: "Aizawl", stateCode: "MZ", countryCode: "IN" },
+    { state: "Nagaland", city: "Kohima", stateCode: "NL", countryCode: "IN" },
+    {
+      state: "Odisha",
+      city: "Bhubaneswar",
+      stateCode: "OR",
+      countryCode: "IN",
+    },
+    { state: "Punjab", city: "Amritsar", stateCode: "PB", countryCode: "IN" },
+    { state: "Rajasthan", city: "Jaipur", stateCode: "RJ", countryCode: "IN" },
+    { state: "Sikkim", city: "Gangtok", stateCode: "SK", countryCode: "IN" },
+    {
+      state: "Tamil Nadu",
+      city: "Chennai",
+      stateCode: "TN",
+      countryCode: "IN",
+    },
+    {
+      state: "Telangana",
+      city: "Hyderabad",
+      stateCode: "TG",
+      countryCode: "IN",
+    },
+    { state: "Tripura", city: "Agartala", stateCode: "TR", countryCode: "IN" },
+    {
+      state: "Uttar Pradesh",
+      city: "Lucknow",
+      stateCode: "UP",
+      countryCode: "IN",
+    },
+    {
+      state: "Uttarakhand",
+      city: "Dehradun",
+      stateCode: "UK",
+      countryCode: "IN",
+    },
+    {
+      state: "West Bengal",
+      city: "Kolkata",
+      stateCode: "WB",
+      countryCode: "IN",
+    },
+  ];
+
+  const calculate = () => {
+    const n1 = parseFloat(num1);
+    const n2 = parseFloat(num2);
+    let res = "";
+
+    if (isNaN(n1) || isNaN(n2)) {
+      res = "Enter valid numbers";
+    } else {
+      switch (operator) {
+        case "+":
+          res = n1 + n2;
+          break;
+        case "-":
+          res = n1 - n2;
+          break;
+        case "*":
+          res = n1 * n2;
+          break;
+        case "/":
+          res = n2 !== 0 ? n1 / n2 : "Cannot divide by 0";
+          break;
+        default:
+          res = "Invalid operator";
+      }
+    }
+
+    setResult(res);
+  };
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      if (!selectedState) return;
+
+      const selected = states.find((s) => s.state === selectedState);
+      if (!selected) return;
+
+      const { city, stateCode, countryCode } = selected;
+
+      try {
+        const geoRes = await fetch(
+          `https://api.openweathermap.org/geo/1.0/direct?q=${city},${stateCode},${countryCode}&limit=1&appid=${API_KEY}`
+        );
+        const geoData = await geoRes.json();
+
+        if (!geoData || geoData.length === 0) {
+          setWeather(null);
+          return;
+        }
+
+        const { lat, lon } = geoData[0];
+
+        const weatherRes = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+        );
+        const weatherData = await weatherRes.json();
+
+        if (weatherData?.main && weatherData?.wind) {
+          setWeather({
+            temp: weatherData.main.temp,
+            humidity: weatherData.main.humidity,
+            wind: weatherData.wind.speed,
+          });
+        } else {
+          setWeather(null);
+        }
+      } catch (error) {
+        console.error("Weather fetching error:", error);
+        setWeather(null);
+      }
+    };
+
+    fetchWeather();
+  }, [selectedState]);
+
+  return (
+    <form style={{ textAlign: "center" }}>
+      <table style={{ borderCollapse: "collapse", margin: "0 auto" }}>
+        <thead>
+          <tr>
+            <th colSpan="4">Function Table</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* Calculator Section */}
+          <tr>
+            <td colSpan="4">1. Calculator</td>
+          </tr>
+          <tr>
+            <td>
+              Number 1:{" "}
+              <input
+                type="text"
+                value={num1}
+                onChange={(e) => setNum1(e.target.value)}
+              />
+            </td>
+            <td>
+              Operator (+,-,*,/):{" "}
+              <input
+                type="text"
+                value={operator}
+                onChange={(e) => setOperator(e.target.value)}
+              />
+            </td>
+            <td>
+              Number 2:{" "}
+              <input
+                type="text"
+                value={num2}
+                onChange={(e) => setNum2(e.target.value)}
+              />
+            </td>
+            <td>
+              <button type="button" onClick={calculate}>
+                Calculate
+              </button>{" "}
+              Result: {result}
+            </td>
+          </tr>
+
+          {/* Weather Section */}
+          <tr>
+            <td colSpan="4">2. Weather Condition</td>
+          </tr>
+          <tr>
+            <td>
+              Select State:{" "}
+              <select
+                value={selectedState}
+                onChange={(e) => setSelectedState(e.target.value)}
+              >
+                <option value="">-- Select --</option>
+                {states.map((s, idx) => (
+                  <option key={idx} value={s.state}>
+                    {s.state}
+                  </option>
+                ))}
+              </select>
+            </td>
+            <td>Temperature: {weather ? `${weather.temp}°C` : "—"}</td>
+            <td>Humidity: {weather ? `${weather.humidity}%` : "—"}</td>
+            <td>Wind: {weather ? `${weather.wind} m/s` : "—"}</td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  );
+};
+
+export default FunTableForm;

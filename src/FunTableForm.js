@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./FunTableform.css";
+
 import { blueGrey, grey, lightBlue, red } from "@mui/material/colors";
 import { CenterFocusStrong } from "@mui/icons-material";
 
@@ -245,9 +246,10 @@ const FunTableForm = () => {
       const selected = states.find((s) => s.state === selectedState);
       if (!selected) return;
       const { city, stateCode, countryCode } = selected;
-      const geoData = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${city},${stateCode},${countryCode}&limit=5&appid=98c58b33527d3b8c6006337a52a48f`
+      const geoRes = await fetch(
+        `http://api.openweathermap.org/geo/1.0/direct?q=${city},${stateCode},${countryCode}&limit=5&appid=7298c58b33527d3b8c6006337a52a48f`
       );
+      const geoData = await geoRes.json();
       console.log("geoData[0]:", geoData[0]);
 
       if (!geoData || geoData.length === 0) {
@@ -256,11 +258,11 @@ const FunTableForm = () => {
       }
       const { lat, lon } = geoData[0];
       const weatherRes = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=98c58b33527d3b8c6006337a52a48f`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=7298c58b33527d3b8c6006337a52a48f`
       );
       const weatherData = await weatherRes.json();
 
-      if (weatherData && weatherData.main && weatherData.wind) {
+      if (weatherData?.main && weatherData?.wind) {
         setWeather({
           temp: weatherData.main.temp,
           humidity: weatherData.main.humidity,
