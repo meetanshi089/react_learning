@@ -30,7 +30,9 @@
 form {
   padding: 2%;
 }
-
+.count_1 {
+  padding: 2%;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

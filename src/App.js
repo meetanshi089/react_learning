@@ -7,6 +7,7 @@ import Practice from "./Practice";
 import SimplePaper from "./SimplePaper";
 import FunTableForm from "./FunTableForm";
 import CounterApp from "./CounterApp";
+import PracticeQues from "./PracticeQues";
 function App() {
   //what is component?
   //What are hooks?
@@ -135,6 +136,9 @@ function App() {
       </header>
       <div className="form">
         <FunTableForm />
+      </div>
+      <div className="count_1">
+        <PracticeQues />
       </div>
 
       <CounterApp />

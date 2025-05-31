@@ -13,35 +13,204 @@ const FunTableForm = () => {
 
   const API_key = "7298c58b33527d3b8c6006337a52a48f";
   const states = [
-    { state: "Andhra Pradesh", city: "Vijayawada", style: { color: "red" } },
-    { state: "Arunachal Pradesh", city: "Itanagar", style: { color: "red" } },
-    { state: "Assam", city: "Guwahati", style: { color: "blue" } },
-    { state: "Bihar", city: "Patna", style: { color: "green" } },
-    { state: "Chhattisgarh", city: "Raipur", style: { color: "white" } },
-    { state: "Goa", city: "Panaji", style: { color: "pink" } },
-    { state: "Gujarat", city: "Ahmedabad", style: { color: "orange" } },
-    { state: "Haryana", city: "Chandigarh", style: { color: "purple" } },
-    { state: "Himachal Pradesh", city: "Shimla", style: { color: "indigo" } },
-    { state: "Jharkhand", city: "Ranchi", style: { color: "yellow" } },
-    { state: "Karnataka", city: "Bengaluru", style: { color: "teal" } },
-    { state: "Kerala", city: "Thiruvananthapuram", style: { color: "brown" } },
-    { state: "Madhya Pradesh", city: "Bhopal", style: { color: "black" } },
-    { state: "Maharashtra", city: "Mumbai", style: { color: "skyblue" } },
-    { state: "Manipur", city: "Imphal", style: { color: "grey" } },
-    { state: "Meghalaya", city: "Shillong", style: { color: "blueGrey" } },
-    { state: "Mizoram", city: "Aizawl", style: { color: "lightBlue" } },
-    { state: "Nagaland", city: "Kohima", style: { color: "lightgreen" } },
-    { state: "Odisha", city: "Bhubaneswar", style: { color: "red" } },
-    { state: "Punjab", city: "Amritsar", style: { color: "red" } },
-    { state: "Rajasthan", city: "Jaipur", style: { color: "red" } },
-    { state: "Sikkim", city: "Gangtok", style: { color: "red" } },
-    { state: "Tamil Nadu", city: "Chennai", style: { color: "red" } },
-    { state: "Telangana", city: "Hyderabad", style: { color: "red" } },
-    { state: "Tripura", city: "Agartala", style: { color: "red" } },
-    { state: "Uttar Pradesh", city: "Lucknow", style: { color: "red" } },
-    { state: "Uttarakhand", city: "Dehradun", style: { color: "red" } },
-    { state: "West Bengal", city: "Kolkata", style: { color: "red" } },
+    {
+      state: "Andhra Pradesh",
+      city: "Vijayawada",
+      style: { color: "red" },
+      stateCode: "AP",
+      countryCode: "IN",
+    },
+    {
+      state: "Arunachal Pradesh",
+      city: "Itanagar",
+      style: { color: "red" },
+      stateCode: "AR",
+      countryCode: "IN",
+    },
+    {
+      state: "Assam",
+      city: "Guwahati",
+      style: { color: "blue" },
+      stateCode: "AS",
+      countryCode: "IN",
+    },
+    {
+      state: "Bihar",
+      city: "Patna",
+      style: { color: "green" },
+      stateCode: "BR",
+      countryCode: "IN",
+    },
+    {
+      state: "Chhattisgarh",
+      city: "Raipur",
+      style: { color: "white" },
+      stateCode: "CT",
+      countryCode: "IN",
+    },
+    {
+      state: "Goa",
+      city: "Panaji",
+      style: { color: "pink" },
+      stateCode: "GA",
+      countryCode: "IN",
+    },
+    {
+      state: "Gujarat",
+      city: "Ahmedabad",
+      style: { color: "orange" },
+      stateCode: "GJ",
+      countryCode: "IN",
+    },
+    {
+      state: "Haryana",
+      city: "Chandigarh",
+      style: { color: "purple" },
+      stateCode: "HR",
+      countryCode: "IN",
+    },
+    {
+      state: "Himachal Pradesh",
+      city: "Shimla",
+      style: { color: "indigo" },
+      stateCode: "HP",
+      countryCode: "IN",
+    },
+    {
+      state: "Jharkhand",
+      city: "Ranchi",
+      style: { color: "yellow" },
+      stateCode: "JH",
+      countryCode: "IN",
+    },
+    {
+      state: "Karnataka",
+      city: "Bengaluru",
+      style: { color: "teal" },
+      stateCode: "KA",
+      countryCode: "IN",
+    },
+    {
+      state: "Kerala",
+      city: "Thiruvananthapuram",
+      style: { color: "brown" },
+      stateCode: "KL",
+      countryCode: "IN",
+    },
+    {
+      state: "Madhya Pradesh",
+      city: "Bhopal",
+      style: { color: "black" },
+      stateCode: "MP",
+      countryCode: "IN",
+    },
+    {
+      state: "Maharashtra",
+      city: "Mumbai",
+      style: { color: "skyblue" },
+      stateCode: "MH",
+      countryCode: "IN",
+    },
+    {
+      state: "Manipur",
+      city: "Imphal",
+      style: { color: "grey" },
+      stateCode: "MN",
+      countryCode: "IN",
+    },
+    {
+      state: "Meghalaya",
+      city: "Shillong",
+      style: { color: "blueGrey" },
+      stateCode: "ML",
+      countryCode: "IN",
+    },
+    {
+      state: "Mizoram",
+      city: "Aizawl",
+      style: { color: "lightBlue" },
+      stateCode: "MZ",
+      countryCode: "IN",
+    },
+    {
+      state: "Nagaland",
+      city: "Kohima",
+      style: { color: "lightgreen" },
+      stateCode: "NL",
+      countryCode: "IN",
+    },
+    {
+      state: "Odisha",
+      city: "Bhubaneswar",
+      style: { color: "red" },
+      stateCode: "OR",
+      countryCode: "IN",
+    },
+    {
+      state: "Punjab",
+      city: "Amritsar",
+      style: { color: "red" },
+      stateCode: "PB",
+      countryCode: "IN",
+    },
+    {
+      state: "Rajasthan",
+      city: "Jaipur",
+      style: { color: "red" },
+      stateCode: "RJ",
+      countryCode: "IN",
+    },
+    {
+      state: "Sikkim",
+      city: "Gangtok",
+      style: { color: "red" },
+      stateCode: "SK",
+      countryCode: "IN",
+    },
+    {
+      state: "Tamil Nadu",
+      city: "Chennai",
+      style: { color: "red" },
+      stateCode: "TN",
+      countryCode: "IN",
+    },
+    {
+      state: "Telangana",
+      city: "Hyderabad",
+      style: { color: "red" },
+      stateCode: "TG",
+      countryCode: "IN",
+    },
+    {
+      state: "Tripura",
+      city: "Agartala",
+      style: { color: "red" },
+      stateCode: "TR",
+      countryCode: "IN",
+    },
+    {
+      state: "Uttar Pradesh",
+      city: "Lucknow",
+      style: { color: "red" },
+      stateCode: "UP",
+      countryCode: "IN",
+    },
+    {
+      state: "Uttarakhand",
+      city: "Dehradun",
+      style: { color: "red" },
+      stateCode: "UK",
+      countryCode: "IN",
+    },
+    {
+      state: "West Bengal",
+      city: "Kolkata",
+      style: { color: "red" },
+      stateCode: "WB",
+      countryCode: "IN",
+    },
   ];
+
   const calculate = () => {
     const n1 = parseFloat(num1);
     const n2 = parseFloat(num2);
@@ -73,18 +242,29 @@ const FunTableForm = () => {
   useEffect(() => {
     const fetchWeather = async (params) => {
       if (!selectedState) return;
-      const selectedCity = states.find((s) => s.state === selectedState)?.city;
-      if (!selectedCity) return;
-      const response = await fetch(
-        "https://api.openweathermap.org/data/2.5/weather?q={selecetedCity}&appid={98c58b33527d3b8c6006337a52a48f}&units=metric"
+      const selected = states.find((s) => s.state === selectedState);
+      if (!selected) return;
+      const { city, stateCode, countryCode } = selected;
+      const geoData = await fetch(
+        `http://api.openweathermap.org/geo/1.0/direct?q=${city},${stateCode},${countryCode}&limit=5&appid=98c58b33527d3b8c6006337a52a48f`
       );
-      const data = await response.json();
+      console.log("geoData[0]:", geoData[0]);
 
-      if (data.main) {
+      if (!geoData || geoData.length === 0) {
+        setWeather(null);
+        return;
+      }
+      const { lat, lon } = geoData[0];
+      const weatherRes = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=98c58b33527d3b8c6006337a52a48f`
+      );
+      const weatherData = await weatherRes.json();
+
+      if (weatherData && weatherData.main && weatherData.wind) {
         setWeather({
-          temp: data.main.temp,
-          humidity: data.main.humidity,
-          wind: data.wind.speed,
+          temp: weatherData.main.temp,
+          humidity: weatherData.main.humidity,
+          wind: weatherData.wind.speed,
         });
       } else {
         setWeather(null);
@@ -154,7 +334,7 @@ const FunTableForm = () => {
             <td>
               Choose State:
               <select
-                value="state"
+                value={selectedState}
                 onChange={(event) => {
                   setState(event.target.value);
                 }}
